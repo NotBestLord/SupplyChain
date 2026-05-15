@@ -1,7 +1,10 @@
 #ifndef __CUSTOMER_H__
 #define __CUSTOMER_H__
 
-class Customer
+class Consumer {};
+class Person {};
+
+class Customer : public Consumer, Person
 {
     private:
         

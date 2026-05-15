@@ -1,7 +1,9 @@
 #ifndef __FACTORY_H__
 #define __FACTORY_H__
 
-class Factory
+class Supplier {};
+
+class Factory : public Supplier
 {
     private:
         

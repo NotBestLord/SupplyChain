@@ -10,9 +10,9 @@ class TransactionManager
         Consumer** consumers;
         Product** products;
     public:
-        void addConsumer();
-        void addProduct();
-        
+        void addConsumer(Consumer& consumer);
+        void addProduct(Product& product);
+
         void transact(Consumer& consumer, Product& product);
         void print();
 };

@@ -2,8 +2,9 @@
 #define __STORE_H__
 
 #include "customer.h"
+class Supplier {};
 
-class Store
+class Store : public Supplier
 {
     private:
         

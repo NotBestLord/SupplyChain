@@ -1,7 +1,9 @@
 #ifndef __PRODUCT_FOOD_H__
 #define __PRODUCT_FOOD_H__
 
-class FoodProduct
+class Product {};
+
+class FoodProduct : public Product
 {
     private:
         int calories;
