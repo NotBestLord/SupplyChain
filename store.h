@@ -2,7 +2,7 @@
 #define __STORE_H__
 
 #include "customer.h"
-class Supplier {};
+#include "supplier.h"
 
 class Store : public Supplier
 {

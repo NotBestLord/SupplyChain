@@ -1,10 +1,9 @@
 #ifndef __DELIVERY_VEHICLE_H__
 #define __DELIVERY_VEHICLE_H__
 
-class AbstractVehicle {};
-class DeliveryMethod {};
+#include "delivery_method.h"
 
-class DeliveryVehicle : public AbstractVehicle, DeliveryMethod
+class DeliveryVehicle : public DeliveryMethod
 {
     private:
         
