@@ -6,7 +6,8 @@
 class Supplier {};
 
 
-class Consumer {
+class Consumer
+{
     public:
         void buy(Product product, Supplier supplier);
     private:

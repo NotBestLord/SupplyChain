@@ -3,7 +3,8 @@
 
 #include "date.h"
 
-class Person {
+class Person
+{
     public:
         enum eGender { MALE, FEMALE, OTHER };
     private:
