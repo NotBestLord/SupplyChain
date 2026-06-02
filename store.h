@@ -4,7 +4,7 @@
 #include "customer.h"
 #include "supplier.h"
 
-class Store : public Supplier
+class Store: public Supplier
 {
 private:
     

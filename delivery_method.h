@@ -3,7 +3,8 @@
 class Product;
 class Consumer;
 
-class DeliveryMethod {
+class DeliveryMethod
+{
 protected:
 	Product** products;
 	int maxProducts;

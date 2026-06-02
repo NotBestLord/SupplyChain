@@ -3,7 +3,7 @@
 
 #include "supplier.h"
 
-class Factory : public Supplier
+class Factory: public Supplier
 {
     private:
         

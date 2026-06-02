@@ -7,7 +7,8 @@ using namespace std;
 
 class Supplier{};
 
-class Product {
+class Product
+{
 private:
     const char* name;
     double cost;
@@ -23,7 +24,7 @@ public:
     Product(const Product& other);
     Product(Product&& other);
     ~Product();
-    
+
 	Product& operator=(const Product& other);
     friend istream& operator>>(istream& is, const Product& p);
     friend ostream& operator<<(ostream& os, const Product& p);

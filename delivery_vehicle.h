@@ -3,7 +3,7 @@
 
 #include "delivery_method.h"
 
-class DeliveryVehicle : public DeliveryMethod
+class DeliveryVehicle: public DeliveryMethod
 {
     private:
         

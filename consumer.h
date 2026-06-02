@@ -3,7 +3,8 @@
 class Product;
 class Supplier;
 
-class Consumer {
+class Consumer
+{
 protected:
 	double balance;
 	Product** ownedProducts;

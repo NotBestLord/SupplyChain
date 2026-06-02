@@ -5,7 +5,8 @@
 class Product;
 class DeliveryMethod;
 
-class Supplier: public Consumer {
+class Supplier: public Consumer
+{
 protected:
 	char* name;
 	Product** supply;
