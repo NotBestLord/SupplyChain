@@ -9,9 +9,9 @@ class Supplier: public Consumer {
 protected:
 	char* name;
 	Product** supply;
-	DeliveryMethod** deliverers;
 	int maxSupply;
 	int currentSupply;
+	DeliveryMethod** deliverers;
 	int maxDeliverers;
 	int currentDeliverers;
 

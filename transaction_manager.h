@@ -20,10 +20,7 @@ private:
 public:
     void transact(Consumer& consumer, Product& product);
 
-    friend ostream& operator>>(ostream& os, const TransactionManager& set)
-    {
-        return os;
-    };
+    friend ostream& operator<<(ostream& os, const TransactionManager& set);
     const TransactionManager& operator+=(Consumer& consumer);
     const TransactionManager& operator+=(Product& product);
 };

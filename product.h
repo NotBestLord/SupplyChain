@@ -19,7 +19,7 @@ private:
     Supplier* supplier;
 public:
 	Product& operator=(const Product& other);
-    friend ostream& operator>>(ostream& os, const Product& p);
+    friend istream& operator>>(istream& is, const Product& p);
     friend ostream& operator<<(ostream& os, const Product& p);
 };
 

@@ -14,10 +14,10 @@ class Person {
 protected:
 	char* name;
 	eGender gender;
-	Date birthDate; 
+	Date& birthDate;
 
 public:
-	Person(const char* name, eGender gender, const Date& date);
+	Person(const char* name, eGender gender, Date& date);
 	Person(const Person& other);
 	virtual ~Person() = 0;
 	
