@@ -25,6 +25,8 @@ public:
     Product(Product&& other);
     ~Product();
 
+    void addIngredient(Product* ingredient);
+
 	Product& operator=(const Product& other);
     friend istream& operator>>(istream& is, const Product& p);
     friend ostream& operator<<(ostream& os, const Product& p);

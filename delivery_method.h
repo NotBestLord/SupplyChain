@@ -15,11 +15,10 @@ public:
 	DeliveryMethod(const DeliveryMethod& other);
 	virtual ~DeliveryMethod() = 0;
 
-	virtual void add(Product* product);
 	virtual void deliver(Consumer* consumer);
 
 	DeliveryMethod& operator=(const DeliveryMethod& other);
-	const DeliveryMethod& operator+=(Product p);
+	const DeliveryMethod& operator+=(Product* p);
 };
 
 inline DeliveryMethod::~DeliveryMethod() {}

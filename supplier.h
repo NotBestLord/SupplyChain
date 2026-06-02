@@ -27,8 +27,8 @@ public:
 	const Product* getProduct(const char* name) const;
 
 	Supplier& operator=(const Supplier& other);
-	const Consumer& operator+=(Product* p);
-	const Consumer& operator+=(DeliveryMethod* p);
+	const Supplier& operator+=(Product* p);
+	const Supplier& operator+=(DeliveryMethod* p);
 };
 
 inline Supplier::~Supplier() {}
