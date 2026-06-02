@@ -1,20 +1,21 @@
-#ifndef __CONSUMER_H__
-#define __CONSUMER_H__
+#pragma once
 
-#include "product.h"
+class Product;
+class Supplier;
 
-class Supplier {};
+class Consumer {
+protected:
+	double balance;
+	Product** ownedProducts;
+	int maxOwnedProducts;
+	int ownedProductCount;
 
-
-class Consumer
-{
-    public:
-        void buy(Product product, Supplier supplier);
-    private:
-        double balance;
-        Product** owned_products;
-        int max_owned_products;
-        int current_owned_products;
+public:
+	Consumer(double balance, int maxOwnedProducts);
+	Consumer(const Consumer& other);
+	Consumer& operator=(const Consumer& other);
+	virtual ~Consumer() = 0;
+	virtual void buy(Product* product, Supplier* supplier);
 };
 
-#endif
+inline Consumer::~Consumer() {}

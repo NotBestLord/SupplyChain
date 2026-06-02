@@ -1,18 +1,21 @@
-#ifndef __DELIVERY_METHOD_H__
-#define __DELIVERY_METHOD_H__
+#pragma once
 
-#include "product.h"
-#include "supplier.h"
+class Product;
+class Consumer;
 
-class DeliveryMethod
-{
-    private:
-        Product* products;
-        int max_products;
-        int current_products;
-    public:
-        void add(Product product);
-        void deliver(Supplier supplier);
+class DeliveryMethod {
+protected:
+	Product** products;
+	int maxProducts;
+	int productCount;
+
+public:
+	DeliveryMethod(int maxProducts);
+	DeliveryMethod(const DeliveryMethod& other);
+	DeliveryMethod& operator=(const DeliveryMethod& other);
+	virtual ~DeliveryMethod() = 0;
+	virtual void add(Product* product);
+	virtual void deliver(Consumer* consumer);
 };
 
-#endif
+inline DeliveryMethod::~DeliveryMethod() {}
