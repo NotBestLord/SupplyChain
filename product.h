@@ -1,6 +1,8 @@
 #ifndef __PRODUCT_H__
 #define __PRODUCT_H__
 
+#include <iostream>
+
 using namespace std;
 
 class Supplier{};

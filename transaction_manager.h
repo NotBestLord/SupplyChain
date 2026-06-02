@@ -1,6 +1,8 @@
 #ifndef __TRANSACTION_MANAGER_H__
 #define __TRANSACTION_MANAGER_H__
 
+#include <iostream>
+
 class Consumer;
 class Product;
 
