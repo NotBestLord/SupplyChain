@@ -18,8 +18,12 @@ private:
     int max_products; // if reached, double products array size and copy original values
     int current_products;
 public:
+    TransactionManager();
+    TransactionManager(const TransactionManager& other);
+    TransactionManager(TransactionManager&& other);
+    ~TransactionManager();
+
     void transact(Consumer& consumer, Product& product);
-    
     void printConsumers();
     void printProducts();
     Consumer* getConsumer(int index);
