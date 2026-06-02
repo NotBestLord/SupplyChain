@@ -8,14 +8,15 @@ protected:
 	double balance;
 	Product** ownedProducts;
 	int maxOwnedProducts;
-	int ownedProductCount;
+	int currentOwnedProducts;
 
 public:
 	Consumer(double balance, int maxOwnedProducts);
 	Consumer(const Consumer& other);
-	Consumer& operator=(const Consumer& other);
 	virtual ~Consumer() = 0;
 	virtual void buy(Product* product, Supplier* supplier);
+	
+	Consumer& operator=(const Consumer& other);
 };
 
 inline Consumer::~Consumer() {}

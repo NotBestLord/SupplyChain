@@ -14,17 +14,13 @@ private:
     double weight;
     int minAge;
     Product** ingredients;
+	int maxIngredients;
+	int currentIngredients;
     Supplier* supplier;
 public:
 	Product& operator=(const Product& other);
-    friend ostream& operator>>(ostream& os, const Product& set)
-    {
-        return os;
-    };
-    friend ostream& operator<<(ostream& os, const Product& set)
-    {
-        return os;
-    };
+    friend ostream& operator>>(ostream& os, const Product& p);
+    friend ostream& operator<<(ostream& os, const Product& p);
 };
 
 #endif

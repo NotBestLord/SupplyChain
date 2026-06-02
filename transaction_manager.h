@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+using namespace std;
+
 class Consumer;
 class Product;
 
@@ -17,7 +19,7 @@ private:
     int current_products;
 public:
     void transact(Consumer& consumer, Product& product);
-    void print();
+
     friend ostream& operator>>(ostream& os, const TransactionManager& set)
     {
         return os;

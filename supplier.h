@@ -11,19 +11,21 @@ protected:
 	Product** supply;
 	DeliveryMethod** deliverers;
 	int maxSupply;
-	int supplyCount;
+	int currentSupply;
 	int maxDeliverers;
-	int delivererCount;
+	int currentDeliverers;
 
 public:
 	Supplier(double balance, int maxOwnedProducts, const char* name, int maxSupply, int maxDeliverers);
 	Supplier(const Supplier& other);
-	Supplier& operator=(const Supplier& other);
-	const Product* const* getProducts() const { return supply; }
-	const Product* getProduct(const char* name) const;
+	virtual ~Supplier() = 0;
+
 	virtual DeliveryMethod* sell(Consumer* consumer);
 
-	virtual ~Supplier() = 0;
+	const Product* const* getProducts() const { return supply; }
+	const Product* getProduct(const char* name) const;
+
+	Supplier& operator=(const Supplier& other);
 	const Consumer& operator+=(Product* p);
 	const Consumer& operator+=(DeliveryMethod* p);
 };

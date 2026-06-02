@@ -13,7 +13,6 @@ enum class eGender {
 class Person {
 protected:
 	char* name;
-	int age;
 	eGender gender;
 	Date birthDate; 
 
@@ -25,12 +24,10 @@ public:
 	void setName(const char* name);
 	const char* getName() const { return name; }
 	
-	int getAge() const { return age; }
-	
 	void setGender(eGender gender) { this->gender = gender; } 
 	eGender getGender() const { return gender; }
 	
-	void setBirthDate(Date birthDate) { this->birthDate = birthDate; }
+	void setBirthDate(const Date& birthDate) { this->birthDate = birthDate; }
 	const Date& getBirthDate() const { return birthDate; }
 
 	Person& operator=(const Person& other);
