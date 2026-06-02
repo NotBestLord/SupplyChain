@@ -6,10 +6,10 @@
 
 class Store : public Supplier
 {
-    private:
-        
-    public:
-        void sellInPerson(Customer& customer);
+private:
+    
+public:
+    void sellInPerson(Customer& customer);
 };
 
 #endif

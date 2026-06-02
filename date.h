@@ -8,7 +8,7 @@ class Date
         int month;
         int year;
     public:
-        Date(int day, int month, int year);
+        Date(int day, int month, int year) : year(year), month(month), day(day) {};
 };
 
 #endif
