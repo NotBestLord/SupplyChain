@@ -19,10 +19,13 @@ public:
 	Supplier(double balance, int maxOwnedProducts, const char* name, int maxSupply, int maxDeliverers);
 	Supplier(const Supplier& other);
 	Supplier& operator=(const Supplier& other);
-	virtual ~Supplier() = 0;
-	virtual const Product* const* getProducts() const { return supply; }
-	virtual const Product* getProduct(const char* name) const;
+	const Product* const* getProducts() const { return supply; }
+	const Product* getProduct(const char* name) const;
 	virtual DeliveryMethod* sell(Consumer* consumer);
+
+	virtual ~Supplier() = 0;
+	const Consumer& operator+=(Product* p);
+	const Consumer& operator+=(DeliveryMethod* p);
 };
 
 inline Supplier::~Supplier() {}
