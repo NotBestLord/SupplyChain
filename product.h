@@ -3,9 +3,8 @@
 
 #include <iostream>
 
-using namespace std;
 
-class Supplier{};
+class Supplier;
 
 class Product
 {
