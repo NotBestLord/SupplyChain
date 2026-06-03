@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include "supplier.h"
 
 class Product;
@@ -17,4 +18,8 @@ public:
 
     void addIngredient(Product* ingredient);
     void produce(Product* product);
+    const Product** getIngredients() { return ingredients; }
+    const int getCurrentIngredients() { return currentIngredients; }
+
+	friend ostream& operator<<(ostream& os, const Factory& p);
 };

@@ -20,8 +20,8 @@ public:
     ~TransactionManager();
 
     void transact(Consumer& consumer, Product& product);
-    void printConsumers();
-    void printProducts();
+    void printConsumers() const;
+    void printProducts() const;
     Consumer* getConsumer(int index);
     Product* getProduct(const char *name);
 

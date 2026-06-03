@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include "customer.h"
 #include "supplier.h"
 
@@ -14,4 +15,6 @@ public:
     ~Store();
 
     void sellInPerson(Customer& customer);
+
+	friend ostream& operator<<(ostream& os, const Store& p);
 };
