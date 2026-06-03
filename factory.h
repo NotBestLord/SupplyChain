@@ -10,7 +10,7 @@ private:
     Product** ingredients;
     int currentIngredients;
 public:
-    Factory();
+    Factory(double balance, int maxOwnedProducts, const char* name, int maxDeliverers);
     Factory(const Factory& other);
     Factory(Factory&& other);
     ~Factory();
