@@ -1,31 +1,38 @@
 #pragma once
 #include <iostream>
 
+using namespace std;
+
 class Consumer;
 class Product;
 
 class TransactionManager
 {
 private:
-    Consumer** consumers;
-    int max_consumers; // if reached, double consumers array size and copy original values
-    int current_consumers;
-    Product** products;
-    int max_products; // if reached, double products array size and copy original values
-    int current_products;
+	Consumer** consumers;
+	int maxConsumers;
+	int currentConsumers;
+	Product** products;
+	int maxProducts;
+	int currentProducts;
+
 public:
-    TransactionManager();
-    TransactionManager(const TransactionManager& other);
-    TransactionManager(TransactionManager&& other);
-    ~TransactionManager();
+	TransactionManager();
+	TransactionManager(const TransactionManager& other);
+	TransactionManager(TransactionManager&& other);
+	~TransactionManager();
 
-    void transact(Consumer& consumer, Product& product);
-    void printConsumers() const;
-    void printProducts() const;
-    Consumer* getConsumer(int index);
-    Product* getProduct(const char *name);
+	void transact(Consumer& consumer, Product& product);
+	void printConsumers() const;
+	void printProducts() const;
 
-    friend ostream& operator<<(ostream& os, const TransactionManager& set);
-    const TransactionManager& operator+=(Consumer& consumer);
-    const TransactionManager& operator+=(Product& product);
+	Consumer* getConsumer(int index);
+	const Consumer* getConsumer(int index) const;
+
+	Product* getProduct(const char* name);
+	const Product* getProduct(const char* name) const;
+
+	friend ostream& operator<<(ostream& os, const TransactionManager& tm);
+	const TransactionManager& operator+=(Consumer& consumer);
+	const TransactionManager& operator+=(Product& product);
 };

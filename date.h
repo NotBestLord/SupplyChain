@@ -1,25 +1,28 @@
 #pragma once
 #include <iostream>
 
+using namespace std;
+
 class Date
 {
 private:
-    int day;
-    int month;
-    int year;
-public:
-    Date(int day, int month, int year) : day(day), month(month), year(year) {}
-    Date(const Date& other);
-    Date(Date&& other);
+	int day;
+	int month;
+	int year;
 
-    void setDay(int day) { this->day = day; }
+public:
+	Date(int day, int month, int year) : day(day), month(month), year(year) {}
+	Date(const Date& other);
+	Date(Date&& other);
+
+	void setDay(int day) { this->day = day; }
 	int getDay() const { return day; }
-    void setMonth(int month) { this->month = month; }
+	void setMonth(int month) { this->month = month; }
 	int getMonth() const { return month; }
-    void setYear(int year) { this->year = year; }
+	void setYear(int year) { this->year = year; }
 	int getYear() const { return year; }
 
 	Date& operator=(const Date& other);
-	friend istream& operator>>(istream& is, const Date& p);
-	friend ostream& operator<<(ostream& os, const Date& p);
+	friend istream& operator>>(istream& is, Date& d);
+	friend ostream& operator<<(ostream& os, const Date& d);
 };

@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 
+using namespace std;
+
 class Product;
 class Consumer;
 
@@ -16,7 +18,7 @@ public:
 	DeliveryMethod(const DeliveryMethod& other);
 	virtual ~DeliveryMethod() = 0;
 
-	virtual void deliver(Consumer* consumer);
+	virtual void deliver(Consumer* consumer) = 0;
 
 	DeliveryMethod& operator=(const DeliveryMethod& other);
 	const DeliveryMethod& operator+=(Product* p);
