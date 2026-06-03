@@ -1,5 +1,4 @@
-#ifndef __CUSTOMER_H__
-#define __CUSTOMER_H__
+#pragma once
 
 #include "person.h"
 #include "consumer.h"
@@ -12,4 +11,3 @@ public:
         
 };
 
-#endif

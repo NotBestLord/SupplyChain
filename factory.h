@@ -1,14 +1,20 @@
-#ifndef __FACTORY_H__
-#define __FACTORY_H__
+#pragma once
 
 #include "supplier.h"
 
+class Product;
+
 class Factory: public Supplier
 {
-    private:
-        
-    public:
-        void produce();
-};
+private:
+    Product** ingredients;
+    int currentIngredients;
+public:
+    Factory();
+    Factory(const Factory& other);
+    Factory(Factory&& other);
+    ~Factory();
 
-#endif
+    void addIngredient(Product* ingredient);
+    void produce(Product* product);
+};

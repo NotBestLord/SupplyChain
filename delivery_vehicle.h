@@ -1,5 +1,4 @@
-#ifndef __DELIVERY_VEHICLE_H__
-#define __DELIVERY_VEHICLE_H__
+#pragma once
 
 #include "delivery_method.h"
 
@@ -11,4 +10,3 @@ class DeliveryVehicle: public DeliveryMethod
 
 };
 
-#endif

@@ -1,8 +1,5 @@
-#ifndef __PRODUCT_H__
-#define __PRODUCT_H__
-
+#pragma once
 #include <iostream>
-
 
 class Supplier;
 
@@ -30,5 +27,3 @@ public:
     friend istream& operator>>(istream& is, const Product& p);
     friend ostream& operator<<(ostream& os, const Product& p);
 };
-
-#endif

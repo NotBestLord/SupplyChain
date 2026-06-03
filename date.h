@@ -1,5 +1,5 @@
-#ifndef __DATE_H__
-#define __DATE_H__
+#pragma once
+#include <iostream>
 
 class Date
 {
@@ -13,6 +13,7 @@ class Date
 	int getDay() const { return day; }
 	int getMonth() const { return month; }
 	int getYear() const { return year; }
-};
 
-#endif
+	friend istream& operator>>(istream& is, const Date& p);
+	friend ostream& operator<<(ostream& os, const Date& p);
+};

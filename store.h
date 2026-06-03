@@ -1,5 +1,4 @@
-#ifndef __STORE_H__
-#define __STORE_H__
+#pragma once
 
 #include "customer.h"
 #include "supplier.h"
@@ -11,5 +10,3 @@ private:
 public:
     void sellInPerson(Customer& customer);
 };
-
-#endif

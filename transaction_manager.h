@@ -1,9 +1,5 @@
-#ifndef __TRANSACTION_MANAGER_H__
-#define __TRANSACTION_MANAGER_H__
-
+#pragma once
 #include <iostream>
-
-using namespace std;
 
 class Consumer;
 class Product;
@@ -33,5 +29,3 @@ public:
     const TransactionManager& operator+=(Consumer& consumer);
     const TransactionManager& operator+=(Product& product);
 };
-
-#endif

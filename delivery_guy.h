@@ -1,5 +1,4 @@
-#ifndef __DELIVERY_GUY_H__
-#define __DELIVERY_GUY_H__
+#pragma once
 
 #include "person.h"
 #include "delivery_method.h"
@@ -11,5 +10,3 @@ class DeliveryGuy: public DeliveryMethod, public Person
     public:
 
 };
-
-#endif

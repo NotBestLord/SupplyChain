@@ -31,6 +31,7 @@ public:
 	const Date& getBirthDate() const { return birthDate; }
 
 	Person& operator=(const Person& other);
+	friend istream& operator>>(istream& is, const Person& p);
 	friend ostream& operator<<(ostream& os, const Person& p);
 };
 
