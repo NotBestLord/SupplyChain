@@ -17,6 +17,9 @@ public:
 	virtual ~Consumer() = 0;
 	virtual void buy(Product* product, Supplier* supplier);
 	
+	void setBalance(int balance) { this->balance = balance; }
+	int getBalance() const { return balance; }
+
 	Consumer& operator=(const Consumer& other);
 };
 
