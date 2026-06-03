@@ -14,7 +14,7 @@ public:
     Customer(Customer&& other);
     ~Customer();
 
-
+	Customer& operator=(const Customer& other);
 	friend ostream& operator<<(ostream& os, const Customer& c);
 };
 

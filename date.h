@@ -19,6 +19,7 @@ public:
     void setYear(int year) { this->year = year; }
 	int getYear() const { return year; }
 
+	Date& operator=(const Date& other);
 	friend istream& operator>>(istream& is, const Date& p);
 	friend ostream& operator<<(ostream& os, const Date& p);
 };

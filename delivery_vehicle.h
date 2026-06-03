@@ -15,6 +15,7 @@ public:
 	
     void deliver(Consumer* consumer);
 
+	DeliveryVehicle& operator=(const DeliveryVehicle& other);
 	friend ostream& operator<<(ostream& os, const DeliveryVehicle& d);
 };
 

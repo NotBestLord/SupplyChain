@@ -16,5 +16,6 @@ public:
 
     void sellInPerson(Customer& customer);
 
+	Store& operator=(const Store& other);
 	friend ostream& operator<<(ostream& os, const Store& p);
 };

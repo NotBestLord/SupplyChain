@@ -21,5 +21,6 @@ public:
     const Product** getIngredients() { return ingredients; }
     const int getCurrentIngredients() { return currentIngredients; }
 
+	Factory& operator=(const Factory& other);
 	friend ostream& operator<<(ostream& os, const Factory& p);
 };
