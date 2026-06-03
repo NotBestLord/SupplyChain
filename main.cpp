@@ -14,28 +14,18 @@ using namespace std;
 
 Product* inputProduct(const Supplier* supplier)
 {
-	char name[100];
-	double cost, weight;
-	int minAge;
-
-	cout << "Product name: ";
-	cin >> name;
-	cout << "Cost: ";
-	cin >> cost;
-	cout << "Weight: ";
-	cin >> weight;
-	cout << "Minimum age: ";
-	cin >> minAge;
-
-	return new Product(name, cost, weight, minAge, supplier);
+	Product p;
+    cout << "Enter New Product: ";
+    cin >> p;
+	return new Product(p);
 }
 
 Date inputDate()
 {
-	int day, month, year;
-	cout << "Birth date (dd mm yyyy): ";
-	cin >> day >> month >> year;
-	return Date(day, month, year);
+	Date date;
+	cout << "Enter Birth date (dd mm yyyy): ";
+	cin >> date;
+	return date;
 }
 
 eGender inputGender()
@@ -56,7 +46,12 @@ eGender inputGender()
 void addProduct(TransactionManager& tm, const Supplier* supplier)
 {
 	Product* p = inputProduct(supplier);
-	tm += *p;
+    if (tm.getProduct(p->getName()) != nullptr)
+    {
+        delete p;
+        return;
+    }
+    tm += *p;
 	cout << "Product added: " << *p << "\n";
 }
 
@@ -261,9 +256,16 @@ int main()
 		case 4:
 		{
 			cout << "Assign to (0=Factory, 1=Store): ";
-			int s; cin >> s;
-			if (s == 0) addDeliveryMethod(activeFactory);
-			else        addDeliveryMethod(activeStore);
+			int s;
+            cin >> s;
+			if (s == 0)
+            {
+                addDeliveryMethod(activeFactory);
+            }
+			else
+            {
+                addDeliveryMethod(activeStore);
+            }
 			break;
 		}
 		case 5:
@@ -275,9 +277,16 @@ int main()
 		case 7:
 		{
 			cout << "Sell from (0=Factory, 1=Store): ";
-			int s; cin >> s;
-			if (s == 0) sellThroughDelivery(tm, activeFactory);
-			else        sellThroughDelivery(tm, activeStore);
+			int s;
+            cin >> s;
+			if (s == 0)
+            {
+                sellThroughDelivery(tm, activeFactory);
+            }
+			else
+            {
+                sellThroughDelivery(tm, activeStore);
+            }
 			break;
 		}
 		case 8:

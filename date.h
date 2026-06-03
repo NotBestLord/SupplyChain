@@ -11,6 +11,7 @@ private:
 	int year;
 
 public:
+    Date();
 	Date(int day, int month, int year) : day(day), month(month), year(year) {}
 	Date(const Date& other);
 	Date(Date&& other);

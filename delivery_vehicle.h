@@ -15,5 +15,6 @@ public:
 	void deliver(Consumer* consumer) override;
 
 	DeliveryVehicle& operator=(const DeliveryVehicle& other);
+	DeliveryVehicle& operator=(DeliveryVehicle&& other);
 	friend ostream& operator<<(ostream& os, const DeliveryVehicle& d);
 };

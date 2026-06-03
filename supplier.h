@@ -18,6 +18,7 @@ protected:
 public:
 	Supplier(double balance, int maxOwnedProducts, const char* name, int maxDeliverers);
 	Supplier(const Supplier& other);
+	Supplier(Supplier&& other);
 	virtual ~Supplier() = 0;
 
 	DeliveryMethod* sell(Consumer* consumer);
@@ -26,6 +27,7 @@ public:
 	const Product* getProduct(const char* name) const;
 
 	Supplier& operator=(const Supplier& other);
+	Supplier& operator=(Supplier&& other);
 	const Supplier& operator+=(Product* product);
 	const Supplier& operator+=(DeliveryMethod* method);
 };

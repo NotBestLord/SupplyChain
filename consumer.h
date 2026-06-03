@@ -14,12 +14,15 @@ protected:
 public:
 	Consumer(double balance, int maxOwnedProducts);
 	Consumer(const Consumer& other);
+	Consumer(Consumer&& other);
 	virtual ~Consumer() = 0;
 	virtual void buy(Product* product, Supplier* supplier);
 
 	void setBalance(double balance) { this->balance = balance; }
 	double getBalance() const { return balance; }
+	
 	Consumer& operator=(const Consumer& other);
+	Consumer& operator=(Consumer&& other);
 };
 
 inline Consumer::~Consumer() {}

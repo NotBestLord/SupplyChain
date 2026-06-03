@@ -32,7 +32,9 @@ public:
 	Product* getProduct(const char* name);
 	const Product* getProduct(const char* name) const;
 
-	friend ostream& operator<<(ostream& os, const TransactionManager& tm);
+    TransactionManager& operator=(const TransactionManager& other);
+	TransactionManager& operator=(TransactionManager&& other);
 	const TransactionManager& operator+=(Consumer& consumer);
 	const TransactionManager& operator+=(Product& product);
+	friend ostream& operator<<(ostream& os, const TransactionManager& tm);
 };

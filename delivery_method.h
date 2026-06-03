@@ -16,11 +16,13 @@ protected:
 public:
 	DeliveryMethod(int maxProducts);
 	DeliveryMethod(const DeliveryMethod& other);
+	DeliveryMethod(DeliveryMethod&& other);
 	virtual ~DeliveryMethod() = 0;
 
 	virtual void deliver(Consumer* consumer) = 0;
 
 	DeliveryMethod& operator=(const DeliveryMethod& other);
+	DeliveryMethod& operator=(DeliveryMethod&& other);
 	const DeliveryMethod& operator+=(Product* p);
 };
 
