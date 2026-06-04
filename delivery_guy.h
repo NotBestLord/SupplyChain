@@ -3,7 +3,7 @@
 #include "person.h"
 #include "delivery_method.h"
 
-using namespace std;
+
 
 class DeliveryGuy : public Person, public DeliveryMethod
 {
@@ -17,5 +17,5 @@ public:
 
 	void deliver(Consumer* consumer) override;
 
-	friend ostream& operator<<(ostream& os, const DeliveryGuy& d);
+	friend std::ostream& operator<<(std::ostream& os, const DeliveryGuy& d);
 };

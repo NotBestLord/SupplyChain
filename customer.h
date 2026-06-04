@@ -3,7 +3,7 @@
 #include "person.h"
 #include "consumer.h"
 
-using namespace std;
+
 
 class Customer : public Person, public Consumer
 {
@@ -15,5 +15,5 @@ public:
 	Customer& operator=(Customer&& other) = delete;
 	~Customer();
 
-	friend ostream& operator<<(ostream& os, const Customer& c);
+	friend std::ostream& operator<<(std::ostream& os, const Customer& c);
 };

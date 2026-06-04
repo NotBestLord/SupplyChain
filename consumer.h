@@ -24,5 +24,3 @@ public:
 	Consumer& operator=(const Consumer& other);
 	Consumer& operator=(Consumer&& other);
 };
-
-inline Consumer::~Consumer() {}

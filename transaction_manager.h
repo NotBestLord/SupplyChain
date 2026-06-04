@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-using namespace std;
+
 
 class Consumer;
 class Product;
@@ -34,7 +34,7 @@ public:
 
     TransactionManager& operator=(const TransactionManager& other);
 	TransactionManager& operator=(TransactionManager&& other);
-	const TransactionManager& operator+=(Consumer& consumer);
-	const TransactionManager& operator+=(Product& product);
-	friend ostream& operator<<(ostream& os, const TransactionManager& tm);
+	TransactionManager& operator+=(Consumer& consumer);
+	TransactionManager& operator+=(Product& product);
+	friend std::ostream& operator<<(std::ostream& os, const TransactionManager& tm);
 };

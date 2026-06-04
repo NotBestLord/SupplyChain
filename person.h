@@ -2,7 +2,7 @@
 #include <iostream>
 #include "date.h"
 
-using namespace std;
+
 
 enum class eGender
 {
@@ -18,8 +18,9 @@ protected:
 	eGender gender;
 	Date& birthDate;
 
+
 public:
-	Person(const char* name, eGender gender, Date& date);
+	Person(const char* name, eGender gender, Date& birthDate);
 	Person(const Person& other) = delete;
 	Person(Person&& other) = delete;
 	Person& operator=(const Person& other) = delete;
@@ -34,7 +35,5 @@ public:
 
 	const Date& getBirthDate() const { return birthDate; }
 
-	friend ostream& operator<<(ostream& os, const Person& p);
+	friend std::ostream& operator<<(std::ostream& os, const Person& p);
 };
-
-inline Person::~Person() {}

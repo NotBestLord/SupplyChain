@@ -28,8 +28,7 @@ public:
 
 	Supplier& operator=(const Supplier& other);
 	Supplier& operator=(Supplier&& other);
-	const Supplier& operator+=(Product* product);
-	const Supplier& operator+=(DeliveryMethod* method);
+	Supplier& operator+=(Product* product);
+	Supplier& operator-=(Product* product);
+	Supplier& operator+=(DeliveryMethod* method);
 };
-
-inline Supplier::~Supplier() {}

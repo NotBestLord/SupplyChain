@@ -2,7 +2,7 @@
 #include <iostream>
 #include "supplier.h"
 
-using namespace std;
+
 
 class Product;
 
@@ -27,5 +27,5 @@ public:
 
 	Factory& operator=(const Factory& other);
 	Factory& operator=(Factory&& other);
-	friend ostream& operator<<(ostream& os, const Factory& f);
+	friend std::ostream& operator<<(std::ostream& os, const Factory& f);
 };

@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-using namespace std;
+
 
 class Date
 {
@@ -13,8 +13,6 @@ private:
 public:
     Date();
 	Date(int day, int month, int year) : day(day), month(month), year(year) {}
-	Date(const Date& other);
-	Date(Date&& other);
 
 	void setDay(int day) { this->day = day; }
 	int getDay() const { return day; }
@@ -23,7 +21,6 @@ public:
 	void setYear(int year) { this->year = year; }
 	int getYear() const { return year; }
 
-	Date& operator=(const Date& other);
-	friend istream& operator>>(istream& is, Date& d);
-	friend ostream& operator<<(ostream& os, const Date& d);
+	friend std::istream& operator>>(std::istream& is, Date& d);
+	friend std::ostream& operator<<(std::ostream& os, const Date& d);
 };

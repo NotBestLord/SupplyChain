@@ -14,7 +14,7 @@ using namespace std;
 
 Product* inputProduct(const Supplier* supplier)
 {
-	Product p;
+	Product p(supplier);
     cout << "Enter New Product: ";
     cin >> p;
 	return new Product(p);
@@ -241,66 +241,80 @@ int main()
 		cout << "0. Exit\n";
 		cout << "Choice: ";
 		cin >> choice;
-
-		switch (choice)
+		try
 		{
-		case 1:
-			addProduct(tm, activeFactory);
-			break;
-		case 2:
-			addFactory(tm, activeFactory);
-			break;
-		case 3:
-			addStore(tm, activeStore);
-			break;
-		case 4:
-		{
-			cout << "Assign to (0=Factory, 1=Store): ";
-			int s;
-            cin >> s;
-			if (s == 0)
-            {
-                addDeliveryMethod(activeFactory);
-            }
-			else
-            {
-                addDeliveryMethod(activeStore);
-            }
-			break;
+			switch (choice)
+			{
+			case 1:
+				addProduct(tm, activeFactory);
+				break;
+			case 2:
+				addFactory(tm, activeFactory);
+				break;
+			case 3:
+				addStore(tm, activeStore);
+				break;
+			case 4:
+			{
+				cout << "Assign to (0=Factory, 1=Store): ";
+				int s;
+				cin >> s;
+				if (s == 0)
+				{
+					addDeliveryMethod(activeFactory);
+				}
+				else
+				{
+					addDeliveryMethod(activeStore);
+				}
+				break;
+			}
+			case 5:
+				addCustomer(tm);
+				break;
+			case 6:
+				produceInFactory(activeFactory, tm);
+				break;
+			case 7:
+			{
+				cout << "Sell from (0=Factory, 1=Store): ";
+				int s;
+				cin >> s;
+				if (s == 0)
+				{
+					sellThroughDelivery(tm, activeFactory);
+				}
+				else
+				{
+					sellThroughDelivery(tm, activeStore);
+				}
+				break;
+			}
+			case 8:
+				sellInPerson(activeStore, tm);
+				break;
+			case 9:
+				cout << tm;
+				break;
+			case 0:
+				cout << "Goodbye.\n";
+				break;
+			default:
+				cout << "Invalid choice. Please enter 0-9.\n";
+				break;
+			}
 		}
-		case 5:
-			addCustomer(tm);
-			break;
-		case 6:
-			produceInFactory(activeFactory, tm);
-			break;
-		case 7:
+		catch (const std::invalid_argument& e)
 		{
-			cout << "Sell from (0=Factory, 1=Store): ";
-			int s;
-            cin >> s;
-			if (s == 0)
-            {
-                sellThroughDelivery(tm, activeFactory);
-            }
-			else
-            {
-                sellThroughDelivery(tm, activeStore);
-            }
-			break;
+			cout << "Invalid input: " << e.what() << "\n";
 		}
-		case 8:
-			sellInPerson(activeStore, tm);
-			break;
-		case 9:
-			cout << tm;
-			break;
-		case 0:
-			cout << "Goodbye.\n";
-			break;
-		default:
-			cout << "Invalid choice. Please enter 0-9.\n";
-			break;
+		catch (const std::overflow_error& e)
+		{
+			cout << "Capacity error: " << e.what() << "\n";
+		}
+		catch (const std::exception& e)
+		{
+			cout << "Error: " << e.what() << "\n";
 		}
 	}
 

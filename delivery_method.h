@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-using namespace std;
+
 
 class Product;
 class Consumer;
@@ -23,7 +23,5 @@ public:
 
 	DeliveryMethod& operator=(const DeliveryMethod& other);
 	DeliveryMethod& operator=(DeliveryMethod&& other);
-	const DeliveryMethod& operator+=(Product* p);
+	DeliveryMethod& operator+=(Product* p);
 };
-
-inline DeliveryMethod::~DeliveryMethod() {}

@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-using namespace std;
+
 
 class Supplier;
 
@@ -18,7 +18,7 @@ private:
 	const Supplier* supplier;
 
 public:
-    Product();
+    Product(const Supplier* supplier);
 	Product(const char* name, double cost, double weight, int minAge, const Supplier* supplier);
 	Product(const Product& other);
 	Product(Product&& other);
@@ -34,6 +34,8 @@ public:
 
 	Product& operator=(const Product& other);
 	Product& operator=(Product&& other);
-	friend istream& operator>>(istream& is, const Product& p);
-	friend ostream& operator<<(ostream& os, const Product& p);
+	bool operator==(const Product& other) const;
+	bool operator!=(const Product& other) const;
+	friend std::istream& operator>>(std::istream& is, Product& p);
+	friend std::ostream& operator<<(std::ostream& os, const Product& p);
 };
