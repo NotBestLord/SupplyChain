@@ -1,4 +1,6 @@
-#pragma once
+#ifndef __SUPPLIER_H__
+#define __SUPPLIER_H__
+
 #include "consumer.h"
 
 class Product;
@@ -21,14 +23,17 @@ public:
 	Supplier(Supplier&& other);
 	virtual ~Supplier() = 0;
 
+	void buy(Product& product, Supplier& supplier);
 	DeliveryMethod* sell(Consumer* consumer);
 
 	const Product** getSupply() const { return (const Product**)supply; }
 	const Product* getProduct(const char* name) const;
 
-	Supplier& operator=(const Supplier& other);
-	Supplier& operator=(Supplier&& other);
+	const Supplier& operator=(const Supplier& other);
+	const Supplier& operator=(Supplier&& other);
 	Supplier& operator+=(Product* product);
 	Supplier& operator-=(Product* product);
 	Supplier& operator+=(DeliveryMethod* method);
 };
+
+#endif

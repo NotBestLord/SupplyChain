@@ -1,8 +1,8 @@
-#pragma once
+#ifndef __PERSON_H__
+#define __PERSON_H__
+
 #include <iostream>
 #include "date.h"
-
-
 
 enum class eGender
 {
@@ -16,15 +16,14 @@ class Person
 protected:
 	char* name;
 	eGender gender;
-	Date& birthDate;
-
+	const Date birthDate;
 
 public:
-	Person(const char* name, eGender gender, Date& birthDate);
+	Person(const char* name, eGender gender, const Date& birthDate);
 	Person(const Person& other) = delete;
 	Person(Person&& other) = delete;
-	Person& operator=(const Person& other) = delete;
-	Person& operator=(Person&& other) = delete;
+	const Person& operator=(const Person& other) = delete;
+	const Person& operator=(Person&& other) = delete;
 	virtual ~Person() = 0;
 
 	void setName(const char* name);
@@ -33,7 +32,9 @@ public:
 	void setGender(eGender gender) { this->gender = gender; }
 	eGender getGender() const { return gender; }
 
-	const Date& getBirthDate() const { return birthDate; }
+	const Date getBirthDate() const { return birthDate; }
 
 	friend std::ostream& operator<<(std::ostream& os, const Person& p);
 };
+
+#endif

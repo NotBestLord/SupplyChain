@@ -1,8 +1,8 @@
-#pragma once
+#ifndef __STORE_H__
+#define __STORE_H__
+
 #include <iostream>
 #include "supplier.h"
-
-
 
 class Customer;
 
@@ -16,3 +16,5 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, const Store& s);
 };
+
+#endif

@@ -1,7 +1,7 @@
-#pragma once
+#ifndef __DATE_H__
+#define __DATE_H__
+
 #include <iostream>
-
-
 
 class Date
 {
@@ -24,3 +24,5 @@ public:
 	friend std::istream& operator>>(std::istream& is, Date& d);
 	friend std::ostream& operator<<(std::ostream& os, const Date& d);
 };
+
+#endif

@@ -1,8 +1,8 @@
-#pragma once
+#ifndef __FACTORY_H__
+#define __FACTORY_H__
+
 #include <iostream>
 #include "supplier.h"
-
-
 
 class Product;
 
@@ -17,6 +17,8 @@ public:
 	Factory(double balance, int maxOwnedProducts, const char* name, int maxDeliverers, int maxIngredients);
 	Factory(const Factory& other);
 	Factory(Factory&& other);
+	const Factory& operator=(const Factory& other);
+	const Factory& operator=(Factory&& other);
 	~Factory();
 
 	void addIngredient(Product* ingredient);
@@ -25,7 +27,7 @@ public:
 	const Product** getIngredients() const { return (const Product**)ingredients; }
 	int getCurrentIngredients() const { return currentIngredients; }
 
-	Factory& operator=(const Factory& other);
-	Factory& operator=(Factory&& other);
 	friend std::ostream& operator<<(std::ostream& os, const Factory& f);
 };
+
+#endif

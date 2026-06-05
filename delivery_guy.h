@@ -1,21 +1,23 @@
-#pragma once
+#ifndef __DELIVERY_GUY_H__
+#define __DELIVERY_GUY_H__
+
 #include <iostream>
 #include "person.h"
 #include "delivery_method.h"
 
-
-
 class DeliveryGuy : public Person, public DeliveryMethod
 {
 public:
-	DeliveryGuy(const char* name, eGender gender, Date& date, int maxProducts);
+	DeliveryGuy(const char* name, eGender gender, const Date& date, int maxProducts);
 	DeliveryGuy(const DeliveryGuy& other) = delete;
 	DeliveryGuy(DeliveryGuy&& other) = delete;
-	DeliveryGuy& operator=(const DeliveryGuy& other) = delete;
-	DeliveryGuy& operator=(DeliveryGuy&& other) = delete;
+	const DeliveryGuy& operator=(const DeliveryGuy& other) = delete;
+	const DeliveryGuy& operator=(DeliveryGuy&& other) = delete;
 	~DeliveryGuy();
 
 	void deliver(Consumer* consumer) override;
 
 	friend std::ostream& operator<<(std::ostream& os, const DeliveryGuy& d);
 };
+
+#endif

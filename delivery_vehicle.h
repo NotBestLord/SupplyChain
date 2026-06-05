@@ -1,8 +1,8 @@
-#pragma once
+#ifndef __DELIVERY_VEHICLE_H__
+#define __DELIVERY_VEHICLE_H__
+
 #include <iostream>
 #include "delivery_method.h"
-
-
 
 class DeliveryVehicle : public DeliveryMethod
 {
@@ -14,3 +14,5 @@ public:
 
 	friend std::ostream& operator<<(std::ostream& os, const DeliveryVehicle& d);
 };
+
+#endif

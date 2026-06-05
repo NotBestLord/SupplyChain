@@ -1,7 +1,7 @@
-#pragma once
+#ifndef __TRANSACTION_MANAGER_H__
+#define __TRANSACTION_MANAGER_H__
+
 #include <iostream>
-
-
 
 class Consumer;
 class Product;
@@ -20,6 +20,8 @@ public:
 	TransactionManager();
 	TransactionManager(const TransactionManager& other);
 	TransactionManager(TransactionManager&& other);
+    const TransactionManager& operator=(const TransactionManager& other);
+	const TransactionManager& operator=(TransactionManager&& other);
 	~TransactionManager();
 
 	void transact(Consumer& consumer, Product& product);
@@ -32,9 +34,9 @@ public:
 	Product* getProduct(const char* name);
 	const Product* getProduct(const char* name) const;
 
-    TransactionManager& operator=(const TransactionManager& other);
-	TransactionManager& operator=(TransactionManager&& other);
 	TransactionManager& operator+=(Consumer& consumer);
 	TransactionManager& operator+=(Product& product);
 	friend std::ostream& operator<<(std::ostream& os, const TransactionManager& tm);
 };
+
+#endif

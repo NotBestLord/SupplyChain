@@ -12,7 +12,7 @@ using namespace std;
 
 // ---------- input helpers ----------
 
-Product* inputProduct(const Supplier* supplier)
+Product* inputProduct(const Supplier& supplier)
 {
 	Product p(supplier);
     cout << "Enter New Product: ";
@@ -43,7 +43,7 @@ eGender inputGender()
 
 // ---------- menu actions ----------
 
-void addProduct(TransactionManager& tm, const Supplier* supplier)
+void addProduct(TransactionManager& tm, const Supplier& supplier)
 {
 	Product* p = inputProduct(supplier);
     if (tm.getProduct(p->getName()) != nullptr)
@@ -52,7 +52,7 @@ void addProduct(TransactionManager& tm, const Supplier* supplier)
         return;
     }
     tm += *p;
-	cout << "Product added: " << *p << "\n";
+	cout << "Product added: " << p << "\n";
 }
 
 void addFactory(TransactionManager& tm, Factory*& outFactory)
@@ -161,7 +161,7 @@ void produceInFactory(Factory* factory, TransactionManager& tm)
 		cout << "No factory available. Add a factory first.\n";
 		return;
 	}
-	Product* p = inputProduct(factory);
+	Product* p = inputProduct(*factory);
 	factory->produce(p);
 	tm += *p;
 	cout << "Product produced: " << *p << "\n";
@@ -220,6 +220,10 @@ void sellInPerson(Store* store, const TransactionManager& tm)
 
 int main()
 {
+	Date d1(1,2,1980);
+	Customer p1("gogo", eGender::Male, d1, 176);
+	Customer p2("gogo", eGender::Male, Date(1,1,1980), 176);
+
 	TransactionManager tm;
 
 	Factory* activeFactory = nullptr;
@@ -246,7 +250,7 @@ int main()
 			switch (choice)
 			{
 			case 1:
-				addProduct(tm, activeFactory);
+				addProduct(tm, *activeFactory);
 				break;
 			case 2:
 				addFactory(tm, activeFactory);
