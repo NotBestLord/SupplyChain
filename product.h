@@ -34,7 +34,6 @@ public:
 
 	bool operator==(const Product& other) const;
 	bool operator!=(const Product& other) const;
-	friend std::istream& operator>>(std::istream& is, Product& p);
 	friend std::ostream& operator<<(std::ostream& os, const Product& p);
 };
 
