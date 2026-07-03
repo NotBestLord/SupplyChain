@@ -14,10 +14,20 @@ using namespace std;
 
 Product* inputProduct(const Supplier& supplier)
 {
-	Product p(supplier);
-    cout << "Enter New Product: ";
-    cin >> p;
-	return new Product(p);
+	char name[100];
+	double cost, weight;
+	int minAge;
+
+	cout << "Product name: ";
+	cin >> name;
+	cout << "Cost: ";
+	cin >> cost;
+	cout << "Weight: ";
+	cin >> weight;
+	cout << "Minimum age for use: ";
+	cin >> minAge;
+	
+	return new Product(name, cost, weight, minAge, supplier);
 }
 
 Date inputDate()

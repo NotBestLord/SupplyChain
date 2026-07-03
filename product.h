@@ -7,17 +7,16 @@
 class Product
 {
 private:
-	char* name;
-	double cost;
-	double weight;
-	int minAge;
+	const char* name;
+	const double cost;
+	const double weight;
+	const int minAge;
 	Product** ingredients;
 	int maxIngredients;
 	int currentIngredients;
 	const Supplier& supplier;
 
 public:
-    Product(const Supplier& supplier);
 	Product(const char* name, double cost, double weight, int minAge, const Supplier& supplier);
 	Product(const Product& other);
 	Product(Product&& other);
