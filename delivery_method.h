@@ -15,10 +15,10 @@ protected:
 
 public:
 	DeliveryMethod(int maxProducts);
-	DeliveryMethod(const DeliveryMethod& other);
-	DeliveryMethod(DeliveryMethod&& other);
-	const DeliveryMethod& operator=(const DeliveryMethod& other);
-	const DeliveryMethod& operator=(DeliveryMethod&& other);
+	DeliveryMethod(const DeliveryMethod& other) = delete;
+	DeliveryMethod(DeliveryMethod&& other) = delete;
+	const DeliveryMethod& operator=(const DeliveryMethod& other) = delete;
+	const DeliveryMethod& operator=(DeliveryMethod&& other) = delete;
 	virtual ~DeliveryMethod() = 0;
 
 	virtual void deliver(Consumer* consumer) = 0;
