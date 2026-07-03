@@ -5,6 +5,10 @@
 
 class Consumer;
 class Product;
+class Customer;
+class Supplier;
+class Factory;
+class Store;
 
 class TransactionManager
 {
@@ -25,14 +29,22 @@ public:
 	~TransactionManager();
 
 	void transact(Consumer& consumer, Product& product);
-	void printConsumers() const;
 	void printProducts() const;
+	void printConsumers() const;
+	void printCustomers() const;
+	void printSuppliers() const;
+	void printStores() const;
+	void printFactories() const;
 
 	Consumer* getConsumer(int index);
 	const Consumer* getConsumer(int index) const;
-
 	Product* getProduct(const char* name);
 	const Product* getProduct(const char* name) const;
+
+	Customer* getCustomer(int index);
+	Supplier* getSupplier(int index);
+	Factory* getFactory(int index);
+	Store* getStore(int index);
 
 	TransactionManager& operator+=(Consumer& consumer);
 	TransactionManager& operator+=(Product& product);

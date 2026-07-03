@@ -41,11 +41,126 @@ eGender inputGender()
 	return static_cast<eGender>(g);
 }
 
+// ---------- lookup helpers ---------- 
+
+Product* lookupProduct(TransactionManager& tm) {
+	if (tm.getProduct(0) == nullptr)
+	{
+		cout << "No products available. Add one first.\n";
+		return nullptr;
+	}
+	tm.printProducts();
+	char name[100];
+	cout << "Enter product name: ";
+	cin >> name;
+	if (tm.getProduct(name) == nullptr)
+	{
+		cout << "This product does not exist.\n";
+		return nullptr;
+	}
+	return tm.getProduct(name);
+}
+
+Supplier* lookupSupplier(TransactionManager& tm) {
+	if (tm.getSupplier(0) == nullptr)
+	{
+		cout << "No supplier available. Add a factory or store first.\n";
+		return nullptr;
+	}
+	tm.printSuppliers();
+	int index;
+	cout << "Enter supplier number: ";
+	cin >> index;
+	if (index < 0 || tm.getSupplier(index) == nullptr)
+	{
+		cout << "Supplier of this index does not exist.\n";
+		return nullptr;
+	}
+	return tm.getSupplier(index);
+}
+
+Factory* lookupFactory(TransactionManager& tm) {
+	if (tm.getFactory(0) == nullptr)
+	{
+		cout << "No factory available. Add one first.\n";
+		return nullptr;
+	}
+	tm.printFactories();
+	int index;
+	cout << "Enter factory number: ";
+	cin >> index;
+	if (index < 0 || tm.getFactory(index) == nullptr)
+	{
+		cout << "Factory of this index does not exist.\n";
+		return nullptr;
+	}
+	return tm.getFactory(index);
+}
+
+Store* lookupStore(TransactionManager& tm) {
+	if (tm.getStore(0) == nullptr)
+	{
+		cout << "No store available. Add one first.\n";
+		return nullptr;
+	}
+	tm.printStores();
+	int index;
+	cout << "Enter store number: ";
+	cin >> index;
+	if (index < 0 || tm.getStore(index) == nullptr)
+	{
+		cout << "Store of this index does not exist.\n";
+		return nullptr;
+	}
+	return tm.getStore(index);
+}
+
+Consumer* lookupConsumer(TransactionManager& tm) {
+	if (tm.getConsumer(0) == nullptr)
+	{
+		cout << "No consumers available. Add one first.\n";
+		return nullptr;
+	}
+	tm.printConsumers();
+	int index;
+	cout << "Enter consumer number: ";
+	cin >> index;
+	if (index < 0 || tm.getConsumer(index) == nullptr)
+	{
+		cout << "Consumer of this index does not exist.\n";
+		return nullptr;
+	}
+	return tm.getConsumer(index);
+}
+
+Customer* lookupCustomer(TransactionManager& tm) {
+	if (tm.getCustomer(0) == nullptr)
+	{
+		cout << "No customers available. Add one first.\n";
+		return nullptr;
+	}
+	tm.printCustomers();
+	int index;
+	cout << "Enter customer number: ";
+	cin >> index;
+	if (index < 0 || tm.getCustomer(index) == nullptr)
+	{
+		cout << "Customer of this index does not exist.\n";
+		return nullptr;
+	}
+	return tm.getCustomer(index);
+}
+
 // ---------- menu actions ----------
 
-void addProduct(TransactionManager& tm, const Supplier& supplier)
+void addProduct(TransactionManager& tm)
 {
-	Product* p = inputProduct(supplier);
+	Supplier* supplier = lookupSupplier(tm);
+	if (supplier == nullptr)
+	{
+		return;
+	}
+	Product* p = inputProduct(*supplier);
     if (tm.getProduct(p->getName()) != nullptr)
     {
         delete p;
@@ -55,7 +170,7 @@ void addProduct(TransactionManager& tm, const Supplier& supplier)
 	cout << "Product added: " << p << "\n";
 }
 
-void addFactory(TransactionManager& tm, Factory*& outFactory)
+void addFactory(TransactionManager& tm)
 {
 	char name[100];
 	double balance;
@@ -72,12 +187,12 @@ void addFactory(TransactionManager& tm, Factory*& outFactory)
 	cout << "Max ingredients: ";
 	cin >> maxIngredients;
 
-	outFactory = new Factory(balance, maxProducts, name, maxDeliverers, maxIngredients);
-	tm += *outFactory;
-	cout << "Factory added: " << *outFactory << "\n";
+	Factory* factory = new Factory(balance, maxProducts, name, maxDeliverers, maxIngredients);
+	tm += *factory;
+	cout << "Factory added: " << *factory << "\n";
 }
 
-void addStore(TransactionManager& tm, Store*& outStore)
+void addStore(TransactionManager& tm)
 {
 	char name[100];
 	double balance;
@@ -92,16 +207,16 @@ void addStore(TransactionManager& tm, Store*& outStore)
 	cout << "Max deliverers: ";
 	cin >> maxDeliverers;
 
-	outStore = new Store(balance, maxProducts, name, maxDeliverers);
-	tm += *outStore;
-	cout << "Store added: " << *outStore << "\n";
+	Store* store = new Store(balance, maxProducts, name, maxDeliverers);
+	tm += *store;
+	cout << "Store added: " << *store << "\n";
 }
 
-void addDeliveryMethod(Supplier* supplier)
+void addDeliveryMethod(TransactionManager& tm)
 {
-	if (!supplier)
+	Supplier* supplier = lookupSupplier(tm);
+	if (supplier == nullptr)
 	{
-		cout << "No supplier available. Add a factory or store first.\n";
 		return;
 	}
 	cout << "Delivery method type (0=Vehicle, 1=DeliveryGuy): ";
@@ -154,62 +269,79 @@ void addCustomer(TransactionManager& tm)
 	cout << "Customer added: " << *c << "\n";
 }
 
-void produceInFactory(Factory* factory, TransactionManager& tm)
+void addProductIngredient(TransactionManager& tm)
 {
-	if (!factory)
+	Product* product = lookupProduct(tm);
+	if (product == nullptr)
 	{
-		cout << "No factory available. Add a factory first.\n";
 		return;
 	}
-	Product* p = inputProduct(*factory);
+	char c;
+	while (true)
+	{
+		cout << "Product: " << product << "\nDo you want to add an ingredient? [y/n]: ";
+		cin >> c;
+		if (c == 'y')
+		{
+			cout << "Choose ingredient:";
+			Product* ingredient = lookupProduct(tm);
+			if (ingredient != nullptr)
+			{
+				product->addIngredient(ingredient);
+			}
+		}
+		else
+		{
+			break;
+		}
+	}
+}
+
+void produceInFactory(TransactionManager& tm)
+{
+	Factory* factory = lookupFactory(tm);
+	if (factory == nullptr)
+	{
+		return;
+	}
+	Product* p = lookupProduct(tm);
 	factory->produce(p);
 	tm += *p;
 	cout << "Product produced: " << *p << "\n";
 }
 
-void sellThroughDelivery(const TransactionManager& tm, Supplier* supplier)
+void sellThroughDelivery(TransactionManager& tm)
 {
-	if (!supplier)
+	Supplier* supplier = lookupSupplier(tm);
+	if (supplier == nullptr)
 	{
-		cout << "No supplier available.\n";
 		return;
 	}
-	tm.printConsumers();
-	cout << "Select consumer index: ";
-	int index;
-	cin >> index;
-	const Consumer* consumer = tm.getConsumer(index);
-	if (!consumer)
+	Consumer* consumer = lookupConsumer(tm);
+	if (consumer == nullptr)
 	{
-		cout << "Invalid index.\n";
 		return;
 	}
-	DeliveryMethod* dm = supplier->sell(const_cast<Consumer*>(consumer));
-	if (!dm)
+	DeliveryMethod* dm = supplier->sell(consumer);
+	if (dm == nullptr)
 	{
 		cout << "No delivery method available.\n";
 		return;
 	}
-	dm->deliver(const_cast<Consumer*>(consumer));
+	dm->deliver(consumer);
 	cout << "Delivered.\n";
 }
 
-void sellInPerson(Store* store, const TransactionManager& tm)
+void sellInPerson(TransactionManager& tm)
 {
-	if (!store)
+	Store* store = lookupStore(tm);
+	if (store == nullptr)
 	{
-		cout << "No store available. Add a store first.\n";
 		return;
 	}
-	tm.printConsumers();
-	cout << "Select customer index: ";
-	int index;
-	cin >> index;
-	const Consumer* consumer = tm.getConsumer(index);
-	Customer* customer = dynamic_cast<Customer*>(const_cast<Consumer*>(consumer));
-	if (!customer)
+	Customer* customer = lookupCustomer(tm);
+	if (customer == nullptr)
 	{
-		cout << "Invalid index or not a customer.\n";
 		return;
 	}
 	store->sellInPerson(*customer);
@@ -226,9 +358,6 @@ int main()
 
 	TransactionManager tm;
 
-	Factory* activeFactory = nullptr;
-	Store* activeStore = nullptr;
-
 	int choice = -1;
 	while (choice != 0)
 	{
@@ -238,10 +367,11 @@ int main()
 		cout << "3. Add store\n";
 		cout << "4. Add delivery method\n";
 		cout << "5. Add customer\n";
-		cout << "6. Produce in factory\n";
-		cout << "7. Sell through delivery\n";
-		cout << "8. Sell in person\n";
-		cout << "9. Print all\n";
+		cout << "6. Add product ingredients\n";
+		cout << "7. Produce in factory\n";
+		cout << "8. Sell through delivery\n";
+		cout << "9. Sell in person\n";
+		cout << "10. Print all\n";
 		cout << "0. Exit\n";
 		cout << "Choice: ";
 		cin >> choice;
@@ -250,54 +380,33 @@ int main()
 			switch (choice)
 			{
 			case 1:
-				addProduct(tm, *activeFactory);
+				addProduct(tm);
 				break;
 			case 2:
-				addFactory(tm, activeFactory);
+				addFactory(tm);
 				break;
 			case 3:
-				addStore(tm, activeStore);
+				addStore(tm);
 				break;
 			case 4:
-			{
-				cout << "Assign to (0=Factory, 1=Store): ";
-				int s;
-				cin >> s;
-				if (s == 0)
-				{
-					addDeliveryMethod(activeFactory);
-				}
-				else
-				{
-					addDeliveryMethod(activeStore);
-				}
+				addDeliveryMethod(tm);
 				break;
-			}
 			case 5:
 				addCustomer(tm);
 				break;
 			case 6:
-				produceInFactory(activeFactory, tm);
+				addProductIngredient(tm);
 				break;
 			case 7:
-			{
-				cout << "Sell from (0=Factory, 1=Store): ";
-				int s;
-				cin >> s;
-				if (s == 0)
-				{
-					sellThroughDelivery(tm, activeFactory);
-				}
-				else
-				{
-					sellThroughDelivery(tm, activeStore);
-				}
+				produceInFactory(tm);
 				break;
-			}
 			case 8:
-				sellInPerson(activeStore, tm);
+				sellThroughDelivery(tm);
 				break;
 			case 9:
+				sellInPerson(tm);
+				break;
+			case 10:
 				cout << tm;
 				break;
 			case 0:

@@ -16,14 +16,14 @@ public:
 	Consumer(double balance, int maxOwnedProducts);
 	Consumer(const Consumer& other);
 	Consumer(Consumer&& other);
+	const Consumer& operator=(const Consumer& other);
+	const Consumer& operator=(Consumer&& other);
 	virtual ~Consumer() = 0;
+	
 	virtual void buy(Product& product, Supplier& supplier);
 
 	void setBalance(double balance) { this->balance = balance; }
 	double getBalance() const { return balance; }
-	
-	const Consumer& operator=(const Consumer& other);
-	const Consumer& operator=(Consumer&& other);
 };
 
 #endif
