@@ -30,7 +30,7 @@ public:
 	int getMinAge() const { return minAge; }
 	const Supplier& getSupplier() const { return supplier; }
 
-	void addIngredient(Product* ingredient);
+	void addIngredient(Product& ingredient);
 
 	bool operator==(const Product& other) const;
 	bool operator!=(const Product& other) const;

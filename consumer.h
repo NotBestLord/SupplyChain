@@ -12,13 +12,13 @@ protected:
 	int maxOwnedProducts;
 	int currentOwnedProducts;
 
-public:
 	Consumer(double balance, int maxOwnedProducts);
 	Consumer(const Consumer& other);
 	Consumer(Consumer&& other);
 	const Consumer& operator=(const Consumer& other);
 	const Consumer& operator=(Consumer&& other);
-	virtual ~Consumer() = 0;
+public:
+	virtual ~Consumer();
 	
 	virtual void buy(Product& product, Supplier& supplier);
 

@@ -13,15 +13,13 @@ protected:
 	int maxProducts;
 	int currentProducts;
 
-public:
 	DeliveryMethod(int maxProducts);
+public:
 	DeliveryMethod(const DeliveryMethod& other) = delete;
 	DeliveryMethod(DeliveryMethod&& other) = delete;
-	const DeliveryMethod& operator=(const DeliveryMethod& other) = delete;
-	const DeliveryMethod& operator=(DeliveryMethod&& other) = delete;
-	virtual ~DeliveryMethod() = 0;
+	virtual ~DeliveryMethod();
 
-	virtual void deliver(Consumer* consumer) = 0;
+	virtual void deliver(Consumer& consumer) = 0;
 
 	DeliveryMethod& operator+=(Product* p);
 };

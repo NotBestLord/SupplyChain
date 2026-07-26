@@ -297,7 +297,7 @@ void addProductIngredient(TransactionManager& tm)
 			Product* ingredient = lookupProduct(tm);
 			if (ingredient != nullptr)
 			{
-				product->addIngredient(ingredient);
+				product->addIngredient(*ingredient);
 			}
 		}
 		else
@@ -315,7 +315,7 @@ void produceInFactory(TransactionManager& tm)
 		return;
 	}
 	Product* p = lookupProduct(tm);
-	factory->produce(p);
+	factory->produce(*p);
 	tm += *p;
 	cout << "Product produced: " << *p << "\n";
 }
@@ -332,13 +332,13 @@ void sellThroughDelivery(TransactionManager& tm)
 	{
 		return;
 	}
-	DeliveryMethod* dm = supplier->sell(consumer);
+	DeliveryMethod* dm = supplier->sell(*consumer);
 	if (dm == nullptr)
 	{
 		cout << "No delivery method available.\n";
 		return;
 	}
-	dm->deliver(consumer);
+	dm->deliver(*consumer);
 	cout << "Delivered.\n";
 }
 

@@ -11,11 +11,9 @@ public:
 	DeliveryGuy(const char* name, eGender gender, const Date& date, int maxProducts);
 	DeliveryGuy(const DeliveryGuy& other) = delete;
 	DeliveryGuy(DeliveryGuy&& other) = delete;
-	const DeliveryGuy& operator=(const DeliveryGuy& other) = delete;
-	const DeliveryGuy& operator=(DeliveryGuy&& other) = delete;
 	~DeliveryGuy();
 
-	void deliver(Consumer* consumer) override;
+	void deliver(Consumer& consumer) override;
 
 	friend std::ostream& operator<<(std::ostream& os, const DeliveryGuy& d);
 };

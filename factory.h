@@ -21,8 +21,8 @@ public:
 	const Factory& operator=(Factory&& other);
 	~Factory();
 
-	void addIngredient(Product* ingredient);
-	void produce(Product* product);
+	void addIngredient(Product& ingredient);
+	void produce(Product& product);
 
 	const Product** getIngredients() const { return (const Product**)ingredients; }
 	int getCurrentIngredients() const { return currentIngredients; }

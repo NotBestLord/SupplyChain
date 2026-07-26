@@ -12,8 +12,6 @@ public:
 	Customer(const char* name, eGender gender, const Date& date, double balance);
 	Customer(const Customer& other) = delete;
 	Customer(Customer&& other) = delete;
-	const Customer& operator=(const Customer& other) = delete;
-	const Customer& operator=(Customer&& other) = delete;
 	~Customer();
 
 	void buy(Product& product, Supplier& supplier);

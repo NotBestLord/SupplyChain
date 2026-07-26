@@ -10,11 +10,9 @@ public:
 	DeliveryVehicle(int maxProducts);
 	DeliveryVehicle(const DeliveryVehicle& other) = delete;
 	DeliveryVehicle(DeliveryVehicle&& other) = delete;
-	const DeliveryVehicle& operator=(const DeliveryVehicle& other) = delete;
-	const DeliveryVehicle& operator=(DeliveryVehicle&& other) = delete;
 	~DeliveryVehicle();
 
-	void deliver(Consumer* consumer) override;
+	void deliver(Consumer& consumer) override;
 
 	friend std::ostream& operator<<(std::ostream& os, const DeliveryVehicle& d);
 };
